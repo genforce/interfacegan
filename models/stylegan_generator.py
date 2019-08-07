@@ -114,8 +114,8 @@ class StyleGANGenerator(BaseGenerator):
                                truncation_psi=self.truncation_psi,
                                truncation_cutoff=self.truncation_layers,
                                randomize_noise=self.randomize_noise)
-      pth_output = self.synthesize(latent_code)
-      distance = np.average(np.abs(tf_output - pth_output['image']))
+      pth_output = self.synthesize(latent_code)['image']
+      distance = np.average(np.abs(tf_output - pth_output))
       self.logger.debug(f'  Test {i:03d}: distance {distance:.6e}.')
       total_distance += distance
     self.logger.info(f'Average distance is {total_distance / test_num:.6e}.')

@@ -202,7 +202,7 @@ def linear_interpolate(latent_code,
   Basically, this function takes a latent code and a boundary as inputs, and
   outputs a collection of manipulated latent codes. For example, let `steps` to
   be 10, then the input `latent_code` is with shape [1, latent_space_dim], input
-  `boundary` is with shape [(]1, latent_space_dim] and unit norm, the output is
+  `boundary` is with shape [1, latent_space_dim] and unit norm, the output is
   with shape [10, latent_space_dim]. The first output latent code is
   `start_distance` away from the given `boundary`, while the last output latent
   code is `end_distance` away from the given `boundary`. Remaining latent codes
