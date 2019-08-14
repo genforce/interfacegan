@@ -5,6 +5,7 @@ __pycache__/
 *.png
 *.jpeg
 *.npy
+log.txt
 
 /results/
 /models/pretrain/
