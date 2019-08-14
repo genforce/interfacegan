@@ -26,7 +26,9 @@ MODEL_POOL = {
         'resolution': 1024,
         'min_val': -1.0,
         'max_val': 1.0,
-        'final_tanh': False,
+        'output_channels': 3,
+        'channel_order': 'RGB',
+        'fused_scale': False,
     },
     'stylegan_celebahq': {
         'tf_model_path':
@@ -39,6 +41,9 @@ MODEL_POOL = {
         'resolution': 1024,
         'min_val': -1.0,
         'max_val': 1.0,
+        'output_channels': 3,
+        'channel_order': 'RGB',
+        'fused_scale': 'auto',
     },
     'stylegan_ffhq': {
         'tf_model_path': MODEL_DIR + '/karras2019stylegan-ffhq-1024x1024.pkl',
@@ -50,6 +55,9 @@ MODEL_POOL = {
         'resolution': 1024,
         'min_val': -1.0,
         'max_val': 1.0,
+        'output_channels': 3,
+        'channel_order': 'RGB',
+        'fused_scale': 'auto',
     },
 }
 

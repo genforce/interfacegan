@@ -85,6 +85,7 @@ class BaseGenerator(object):
     self.check_attr('resolution')
     self.min_val = getattr(self, 'min_val', -1.0)
     self.max_val = getattr(self, 'max_val', 1.0)
+    self.output_channels = getattr(self, 'output_channels', 3)
     self.channel_order = getattr(self, 'channel_order', 'RGB').upper()
     assert self.channel_order in ['RGB', 'BGR']
 
