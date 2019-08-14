@@ -245,4 +245,3 @@ class BaseGenerator(object):
     total_num = latent_codes.shape[0]
     for i in range(0, total_num, self.batch_size):
       yield latent_codes[i:i + self.batch_size]
-

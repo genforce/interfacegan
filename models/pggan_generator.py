@@ -120,4 +120,3 @@ class PGGANGenerator(BaseGenerator):
         'image': self.get_value(images),
     }
     return results
-

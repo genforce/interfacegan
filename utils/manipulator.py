@@ -241,4 +241,3 @@ def linear_interpolate(latent_code,
                    f'[1, latent_space_dim] or [1, N, latent_space_dim] for '
                    f'W+ space in Style GAN!\n'
                    f'But {latent_code.shape} is received.')
-

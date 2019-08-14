@@ -244,4 +244,3 @@ class ConvBlock(nn.Module):
     x = self.wscale(x)
     x = self.activate(x)
     return x
-

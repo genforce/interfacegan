@@ -64,4 +64,3 @@ def setup_logger(work_dir=None, logfile_name='log.txt', logger_name='logger'):
   logger.addHandler(fh)
 
   return logger
-

@@ -271,4 +271,3 @@ class StyleGANGenerator(BaseGenerator):
       results['image'] = self.get_value(images)
 
     return results
-
