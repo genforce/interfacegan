@@ -25,14 +25,17 @@ class PGGANGenerator(BaseGenerator):
     assert self.gan_type == 'pggan'
 
   def build(self):
-    self.check_attr('final_tanh')
+    self.check_attr('fused_scale')
     self.model = PGGANGeneratorModel(resolution=self.resolution,
-                                     final_tanh=self.final_tanh)
+                                     fused_scale=self.fused_scale,
+                                     output_channels=self.output_channels)
 
   def load(self):
     self.logger.info(f'Loading pytorch model from `{self.model_path}`.')
     self.model.load_state_dict(torch.load(self.model_path))
     self.logger.info(f'Successfully loaded!')
+    self.lod = self.model.lod.to(self.cpu_device).tolist()
+    self.logger.info(f'  `lod` of the loaded model is {self.lod}.')
 
   def convert_tf_model(self, test_num=10):
     import sys
@@ -52,12 +55,16 @@ class PGGANGenerator(BaseGenerator):
     state_dict = self.model.state_dict()
     for pth_var_name, tf_var_name in self.model.pth_to_tf_var_mapping.items():
       if tf_var_name not in tf_vars:
+        self.logger.debug(f'Variable `{tf_var_name}` does not exist in '
+                          f'tensorflow model.')
         continue
       self.logger.debug(f'  Converting `{tf_var_name}` to `{pth_var_name}`.')
-      var = torch.from_numpy(tf_vars[tf_var_name])
+      var = torch.from_numpy(np.array(tf_vars[tf_var_name]))
       if 'weight' in pth_var_name:
-        if 'layer1.conv' in pth_var_name:
+        if 'layer0.conv' in pth_var_name:
           var = var.view(var.shape[0], -1, 4, 4).permute(1, 0, 2, 3).flip(2, 3)
+        elif 'Conv0_up' in tf_var_name:
+          var = var.permute(0, 1, 3, 2)
         else:
           var = var.permute(3, 2, 0, 1)
       state_dict[pth_var_name] = var

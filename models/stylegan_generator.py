@@ -45,9 +45,12 @@ class StyleGANGenerator(BaseGenerator):
 
   def build(self):
     self.check_attr('w_space_dim')
+    self.check_attr('fused_scale')
     self.model = StyleGANGeneratorModel(
         resolution=self.resolution,
         w_space_dim=self.w_space_dim,
+        fused_scale=self.fused_scale,
+        output_channels=self.output_channels,
         truncation_psi=self.truncation_psi,
         truncation_layers=self.truncation_layers,
         randomize_noise=self.randomize_noise)
@@ -59,6 +62,8 @@ class StyleGANGenerator(BaseGenerator):
       state_dict[var_name] = self.model.state_dict()[var_name]
     self.model.load_state_dict(state_dict)
     self.logger.info(f'Successfully loaded!')
+    self.lod = self.model.synthesis.lod.to(self.cpu_device).tolist()
+    self.logger.info(f'  `lod` of the loaded model is {self.lod}.')
 
   def convert_tf_model(self, test_num=10):
     import sys
@@ -82,9 +87,11 @@ class StyleGANGenerator(BaseGenerator):
     state_dict = self.model.state_dict()
     for pth_var_name, tf_var_name in self.model.pth_to_tf_var_mapping.items():
       if tf_var_name not in tf_vars:
+        self.logger.debug(f'Variable `{tf_var_name}` does not exist in '
+                          f'tensorflow model.')
         continue
       self.logger.debug(f'  Converting `{tf_var_name}` to `{pth_var_name}`.')
-      var = torch.from_numpy(tf_vars[tf_var_name])
+      var = torch.from_numpy(np.array(tf_vars[tf_var_name]))
       if 'weight' in pth_var_name:
         if 'dense' in pth_var_name:
           var = var.permute(1, 0)
