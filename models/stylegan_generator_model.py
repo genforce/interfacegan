@@ -478,9 +478,7 @@ class NoiseApplyingLayer(nn.Module):
       raise ValueError(f'The input tensor should be with shape [batch_size, '
                        f'num_channels, height, width], but {x.shape} received!')
     if self.randomize_noise:
-      noise = torch.randn(x.shape[0], 1, self.res, self.res)
-      if x.is_cuda:
-        noise = noise.cuda()
+      noise = torch.randn(x.shape[0], 1, self.res, self.res).to(x)
     else:
       noise = self.noise
     return x + noise * self.weight.view(1, -1, 1, 1)
