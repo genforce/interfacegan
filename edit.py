@@ -4,6 +4,12 @@
 Basically, this file takes latent codes and a semantic boundary as inputs, and
 then shows how the image synthesis will change if the latent codes is moved
 towards the given boundary.
+
+NOTE: If you want to use W or W+ space of StyleGAN, please do not randomly
+sample the latent code, since neither W nor W+ space is subject to Gaussian
+distribution. Instead, please use `generate_data.py` to get the latent vectors
+from W or W+ space first, and then use `--input_latent_codes_path` option to
+pass in the latent vectors.
 """
 
 import os.path
