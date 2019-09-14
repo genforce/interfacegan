@@ -801,7 +801,7 @@ class DenseBlock(nn.Module):
                               gain=wscale_gain,
                               lr_multiplier=wscale_lr_multiplier)
     if activation_type == 'linear':
-      self.activate = (lambda x: x)
+      self.activate = nn.Identity()
     elif activation_type == 'lrelu':
       self.activate = nn.LeakyReLU(negative_slope=0.2, inplace=True)
     else:
