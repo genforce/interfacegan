@@ -272,7 +272,7 @@ class ConvBlock(nn.Module):
     if upsample and not fused_scale:
       self.upsample = ResolutionScalingLayer()
     else:
-      self.upsample = lambda x: x
+      self.upsample = nn.Identity()
 
     if upsample and fused_scale:
       self.weight = nn.Parameter(
@@ -295,7 +295,7 @@ class ConvBlock(nn.Module):
                               gain=wscale_gain)
 
     if activation_type == 'linear':
-      self.activate = (lambda x: x)
+      self.activate = nn.Identity()
     elif activation_type == 'lrelu':
       self.activate = nn.LeakyReLU(negative_slope=0.2, inplace=True)
     elif activation_type == 'tanh':
