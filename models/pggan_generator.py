@@ -54,6 +54,10 @@ class PGGANGenerator(BaseGenerator):
     tf_vars = dict(tf_model.__getstate__()['variables'])
     state_dict = self.model.state_dict()
     for pth_var_name, tf_var_name in self.model.pth_to_tf_var_mapping.items():
+      if 'ToRGB_lod' in tf_var_name:
+        lod = int(tf_var_name[len('ToRGB_lod')])
+        lod_shift = 10 - int(np.log2(self.resolution))
+        tf_var_name = tf_var_name.replace(f'{lod}', f'{lod - lod_shift}')
       if tf_var_name not in tf_vars:
         self.logger.debug(f'Variable `{tf_var_name}` does not exist in '
                           f'tensorflow model.')
