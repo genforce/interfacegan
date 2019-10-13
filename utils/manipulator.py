@@ -66,8 +66,8 @@ def train_boundary(latent_codes,
 
   logger.info(f'Filtering training data.')
   if invalid_value is not None:
-    latent_codes = latent_codes[scores != invalid_value]
-    scores = scores[scores != invalid_value]
+    latent_codes = latent_codes[scores[:, 0] != invalid_value]
+    scores = scores[scores[:, 0] != invalid_value]
 
   logger.info(f'Sorting scores to get positive and negative samples.')
   sorted_idx = np.argsort(scores, axis=0)[::-1, 0]
@@ -77,7 +77,7 @@ def train_boundary(latent_codes,
   if 0 < chosen_num_or_ratio <= 1:
     chosen_num = int(num_samples * chosen_num_or_ratio)
   else:
-    chosen_num = chosen_num_or_ratio
+    chosen_num = int(chosen_num_or_ratio)
   chosen_num = min(chosen_num, num_samples // 2)
 
   logger.info(f'Spliting training and validation sets:')
