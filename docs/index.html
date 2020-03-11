@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- === Header Starts === -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>InterFaceGAN</title>
+
+  <link href="./assets/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/font.css" rel="stylesheet" type="text/css">
+  <link href="./assets/style.css" rel="stylesheet" type="text/css">
+</head>
+<!-- === Header Ends === -->
+
+
+<body>
+
+
+<!-- === Home Section Starts === -->
+<div class="container">
+  <div class="title" style="margin: 20pt 50pt;">
+    Interpreting the Latent Space of GANs for Semantic Face Editing
+  </div>
+  <div class="author">
+    <a href="http://shenyujun.github.io" target="_blank">Yujun Shen</a><sup>1</sup>&nbsp;
+    <a href="http://www.jasongt.com" target="_blank">Jinjin Gu</a><sup>2</sup>&nbsp;
+    <a href="http://www.ie.cuhk.edu.hk/people/xotang.shtml" target="_blank">Xiaoou Tang</a><sup>1</sup>&nbsp;
+    <a href="http://bzhou.ie.cuhk.edu.hk" target="_blank">Bolei Zhou</a><sup>1</sup>&nbsp;
+  </div>
+  <div class="institution">
+    <sup>1</sup>The Chinese University of Hong Kong <br>
+    <sup>2</sup>The Chinese University of Hong Kong, Shenzhen
+  </div>
+  <div class="link">
+    <a href="https://arxiv.org/pdf/1907.10786.pdf" target="_blank">[Paper]</a>&nbsp;
+    <a href="https://github.com/genforce/interfacegan" target="_blank">[Code]</a>
+  </div>
+  <div class="teaser">
+    <img src="./assets/teaser.jpg">
+  </div>
+</div>
+<!-- === Home Section Ends === -->
+
+
+<!--====== Overview Section Starts ======-->
+<div class="container">
+  <div class="title">Overview</div>
+  <div class="body">
+    We find that the latent code for well-trained generative models, such as PGGAN and StyleGAN,
+    actually learns a disentangled representation after some linear transformations.
+    Based on our analysis, we propose a simple and general technique, called <b>InterFaceGAN</b>,
+    for semantic face editing in latent space.
+    We manage to control the pose as well as other facial attributes, such as gender, age, eyeglasses.
+    More importantly, we are able to correct the artifacts made by GANs.
+  </div>
+</div>
+<!--====== Overview Section Ends ======-->
+
+
+<!--====== Results Section Starts ======-->
+<div class="container">
+  <div class="title">Results</div>
+  <div class="body">
+    We manipulate the following attributes with PGGAN.
+
+    <table width="100%" style="margin: 20pt auto; text-align: center;">
+      <tr>
+        <td><b>Pose</b></td>
+        <td><b>Age</b></td>
+        <td><b>Gender</b></td>
+      </tr>
+      <tr>
+        <td><img src="./assets/pose.gif" width="90%"></img></td>
+        <td><img src="./assets/age.gif" width="90%"></img></td>
+        <td><img src="./assets/gender.gif" width="90%"></img></td>
+      </tr>
+      <tr>
+        <td><b>Expression</b></td>
+        <td><b>Eyeglasses</b></td>
+        <td><b>Artifacts</b></td>
+      </tr>
+      <tr>
+        <td><img src="./assets/expression.gif" width="90%"></img></td>
+        <td><img src="./assets/eyeglasses.gif" width="90%"></img></td>
+        <td><img src="./assets/artifact.gif" width="90%"></img></td>
+      </tr>
+    </table>
+
+    Check more results in the following video.
+
+    <!-- Adjust the frame size based on the demo (Every project differs). -->
+    <div style="position: relative; padding-top: 50%; margin: 20pt auto; text-align: center;">
+      <iframe src="https://www.youtube.com/embed/uoftpl3Bj6w" frameborder=0
+              style="position: absolute; top: 2.5%; left: 2.5%; width: 95%; height: 100%;"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+<!--====== Results Section Ends ======-->
+
+
+<!--====== References Section Starts ======-->
+<div class="container">
+  <div class="bibtex">Bibtex</div>
+<pre>
+@inproceedings{shen2019interpreting,
+  title     = {Interpreting the Latent Space of GANs for Semantic Face Editing},
+  author    = {Yujun Shen, Jinjin Gu, Xiaoou Tang, Bolei Zhou},
+  booktitle = {CVPR},
+  year      = {2020}
+}
+</pre>
+
+<!--====== References Section Starts ======-->
+  <div class="ref">Related Work</div>
+  <div class="citation">
+    <img src="./assets/gandissection.jpg">
+    <a href="http://gandissect.csail.mit.edu/">
+      D.Bau, JY.Zhu, H.Strobelt, B.Zhou, JB.Tenenbaum, WT.Freeman, A.Torralba.
+      GAN Dissection: Visualizing and Understanding Generative Adversarial Networks.
+      ICLR 2019.
+    </a>
+    <br>
+    <b>Comment:</b> Dissects neurons in GANs from the perspective of spatial feature map.
+  </div>
+  <div class="citation">
+    <img src="./assets/ganalyze.jpg">
+    <a href="http://ganalyze.csail.mit.edu/">
+      L.Goetschalckx, A.Andonian, A.Oliva, P.Isola.
+      GANalyze: Toward Visual Definitions of Cognitive Image Properties.
+      ICCV, 2019.
+    </a>
+    <br>
+    <b>Comment:</b> Navigates the manifold of GAN's latent space to increase memorability.
+  </div>
+  <div class="citation">
+    <img src="./assets/steerability.jpg">
+    <a href="https://ali-design.github.io/gan_steerability/">
+      A.Jahanian, L.Chai, P.Isola.
+      On the "Steerability" of Generative Adversarial Networks.
+      ICLR, 2020.
+    </a>
+    <br>
+    <b>Comment:</b> Shifts the data distribution by steering the latent code to fit camera movements and color changes.
+  </div>
+  <div class="citation">
+    <img src="./assets/higan.jpg">
+    <a href="https://genforce.github.io/HiGAN/">
+      C.Yang, Y.Shen, B.Zhou.
+      Semantic Hierarchy Emerges in Deep Generative Representations for Scene Synthesis.
+      ICLR, 2020.
+    </a>
+    <br>
+    <b>Comment:</b> Explores the emergent semantic hierarchy in scene synthesis models.
+  </div>
+</div>
+<!--====== References Section Ends ======-->
+
+
+</body>
+</html>

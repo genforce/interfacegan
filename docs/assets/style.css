@@ -1,0 +1,103 @@
+/* Homepage Style */
+
+/* Body */
+body {
+	background: #e3e5e8;
+	color: #ffffff;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+	font-weight: 300;
+	font-size: 14pt;
+}
+
+/* Headings */
+h1 {font-size:30pt;}
+h2 {font-size:22pt;}
+h3 {font-size:14pt;}
+
+/* Hyperlinks */
+a {text-decoration: none;}
+a:link {color: #1772d0;}
+a:visited {color: #1772d0;}
+a:active {color: red;}
+a:hover {color: #f09228;}
+
+pre {
+	background: #fcfcfc;
+	border: 0;
+	font-size: 12pt;
+	margin: 5pt auto;
+}
+
+/* Container */
+.container {
+	width: 768pt;
+	min-height: 100pt;
+	margin: 15pt auto;
+	padding: 20pt;
+	border: 1pt hidden #000;
+	text-align: justify;
+	color: #000000;
+	background: #ffffff;
+}
+
+.container .title {
+	text-align: center;
+	font-size: 22pt;
+	margin: 5pt auto;
+}
+
+.container .author {
+	text-align: center;
+	font-size: 16pt;
+	margin: 20pt auto;
+}
+
+.container .institution {
+	text-align: center;
+	font-size: 16pt;
+	margin: 20pt auto;
+}
+
+.container .link {
+	text-align: center;
+	font-size: 16pt;
+	margin: 20pt auto;
+}
+
+.container .teaser {text-align: center;}
+.container .teaser img {
+	text-align: center;
+	margin: 20pt auto;
+	width: 95%;
+}
+
+.container .body {
+	text-align: justify;
+	font-size: 14pt;
+	margin: 10pt auto;
+}
+
+.container .bibtex {
+	text-align: left;
+	font-size: 22pt;
+	margin: 5pt auto;
+}
+
+.container .ref {
+	text-align: left;
+	font-size: 18pt;
+	font-weight: bold;
+	margin: 15pt auto;
+}
+
+.container .citation {
+  margin: 8pt auto;
+  font-size:14pt;
+  clear: both;
+}
+
+.container .citation img {
+  float: left;
+  margin: 0 8pt 8pt 0;  /*top right bottom left*/
+  width: 120pt;
+}

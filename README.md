@@ -5,13 +5,13 @@
 ![TensorFlow 1.12.2](https://img.shields.io/badge/tensorflow-1.12.2-green.svg?style=plastic)
 ![sklearn 0.21.2](https://img.shields.io/badge/sklearn-0.21.2-green.svg?style=plastic)
 
-![image](./teaser.jpg)
+![image](./docs/assets/teaser.jpg)
 **Figure:** *High-quality facial attributes editing results with InterFaceGAN.*
 
 In this repository, we propose an approach, termed as InterFaceGAN, for semantic face editing. Specifically, InterFaceGAN is capable of turning an unconditionally trained face synthesis model to controllable GAN by interpreting the very first latent space and finding the hidden semantic subspaces.
 
 [[Paper](https://arxiv.org/pdf/1907.10786.pdf)]
-[[Project Page](https://shenyujun.github.io/InterFaceGAN/index.html)]
+[[Project Page](https://genforce.github.io/interfacegan/)]
 [[Demo](https://www.youtube.com/embed/uoftpl3Bj6w)]
 
 ## How to Use
