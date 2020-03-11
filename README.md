@@ -8,11 +8,15 @@
 ![image](./docs/assets/teaser.jpg)
 **Figure:** *High-quality facial attributes editing results with InterFaceGAN.*
 
-In this repository, we propose an approach, termed as InterFaceGAN, for semantic face editing. Specifically, InterFaceGAN is capable of turning an unconditionally trained face synthesis model to controllable GAN by interpreting the very first latent space and finding the hidden semantic subspaces.
+In this repository, we propose an approach, termed as InterFaceGAN, for semantic face editing. Specifically, InterFaceGAN is capable of turning an unconditionally trained face synthesis model to controllable GAN by interpreting the very first latent space and finding the hidden semantic subspaces. Please find more details in our **CVPR 2020 paper**:
+
+> **Interpreting the Latent Space of GANs for Semantic Face Editing** <br>
+> Yujun Shen, Jinjin Gu, Xiaoou Tang, Bolei Zhou <br>
+> *Computer Vision and Pattern Recognition (CVPR) 2020*
 
 [[Paper](https://arxiv.org/pdf/1907.10786.pdf)]
 [[Project Page](https://genforce.github.io/interfacegan/)]
-[[Demo](https://www.youtube.com/embed/uoftpl3Bj6w)]
+[[Demo](https://www.youtube.com/watch?v=uoftpl3Bj6w)]
 
 ## How to Use
 
