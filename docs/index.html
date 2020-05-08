@@ -19,14 +19,21 @@
 
 
 <!-- === Home Section Starts === -->
-<div class="container">
-  <div class="title" style="margin: 20pt 50pt;">
-    Interpreting the Latent Space of GANs for Semantic Face Editing
+<div class="section">
+  <!-- === Title Starts === -->
+  <div class="header">
+    <div class="logo">
+      <a href="https://genforce.github.io/" target="_blank"><img src="./assets/genforce.png"></a>
+    </div>
+    <div class="title", style="padding-top: 10pt;">
+      Interpreting the Latent Space of GANs for Semantic Face Editing
+    </div>
   </div>
+  <!-- === Title Ends === -->
   <div class="author">
-    <a href="http://shenyujun.github.io" target="_blank">Yujun Shen</a><sup>1</sup>&nbsp;
-    <a href="http://www.jasongt.com" target="_blank">Jinjin Gu</a><sup>2</sup>&nbsp;
-    <a href="http://www.ie.cuhk.edu.hk/people/xotang.shtml" target="_blank">Xiaoou Tang</a><sup>1</sup>&nbsp;
+    <a href="http://shenyujun.github.io" target="_blank">Yujun Shen</a><sup>1</sup>,&nbsp;
+    <a href="http://www.jasongt.com" target="_blank">Jinjin Gu</a><sup>2</sup>,&nbsp;
+    <a href="http://www.ie.cuhk.edu.hk/people/xotang.shtml" target="_blank">Xiaoou Tang</a><sup>1</sup>,&nbsp;
     <a href="http://bzhou.ie.cuhk.edu.hk" target="_blank">Bolei Zhou</a><sup>1</sup>&nbsp;
   </div>
   <div class="institution">
@@ -44,8 +51,8 @@
 <!-- === Home Section Ends === -->
 
 
-<!--====== Overview Section Starts ======-->
-<div class="container">
+<!-- === Overview Section Starts === -->
+<div class="section">
   <div class="title">Overview</div>
   <div class="body">
     We find that the latent code for well-trained generative models, such as PGGAN and StyleGAN,
@@ -56,11 +63,11 @@
     More importantly, we are able to correct the artifacts made by GANs.
   </div>
 </div>
-<!--====== Overview Section Ends ======-->
+<!-- === Overview Section Ends === -->
 
 
-<!--====== Results Section Starts ======-->
-<div class="container">
+<!-- === Result Section Starts === -->
+<div class="section">
   <div class="title">Results</div>
   <div class="body">
     We manipulate the following attributes with PGGAN.
@@ -99,12 +106,12 @@
     </div>
   </div>
 </div>
-<!--====== Results Section Ends ======-->
+<!-- === Result Section Ends === -->
 
 
-<!--====== References Section Starts ======-->
-<div class="container">
-  <div class="bibtex">Bibtex</div>
+<!-- === Reference Section Starts === -->
+<div class="section">
+  <div class="bibtex">BibTeX</div>
 <pre>
 @inproceedings{shen2019interpreting,
   title     = {Interpreting the Latent Space of GANs for Semantic Face Editing},
@@ -114,50 +121,53 @@
 }
 </pre>
 
-<!--====== References Section Starts ======-->
   <div class="ref">Related Work</div>
   <div class="citation">
-    <img src="./assets/gandissection.jpg">
-    <a href="http://gandissect.csail.mit.edu/">
-      D. Bau, JY. Zhu, H. Strobelt, B. Zhou, JB. Tenenbaum, WT. Freeman, A. Torralba.
-      GAN Dissection: Visualizing and Understanding Generative Adversarial Networks.
-      ICLR 2019.
-    </a>
-    <br>
-    <b>Comment:</b> Dissects neurons in GANs from the perspective of spatial feature map.
+    <div class="image"><img src="./assets/gandissection.jpg"></div>
+    <div class="comment">
+      <a href="http://gandissect.csail.mit.edu/" target="_blank">
+        D. Bau, JY. Zhu, H. Strobelt, B. Zhou, JB. Tenenbaum, WT. Freeman, A. Torralba.
+        GAN Dissection: Visualizing and Understanding Generative Adversarial Networks.
+        ICLR 2019.</a><br>
+      <b>Comment:</b>
+      Dissects neurons in GANs from the perspective of spatial feature map.
+    </div>
   </div>
   <div class="citation">
-    <img src="./assets/ganalyze.jpg">
-    <a href="http://ganalyze.csail.mit.edu/">
-      L. Goetschalckx, A. Andonian, A. Oliva, P. Isola.
-      GANalyze: Toward Visual Definitions of Cognitive Image Properties.
-      ICCV, 2019.
-    </a>
-    <br>
-    <b>Comment:</b> Navigates the manifold of GAN's latent space to increase memorability.
+    <div class="image"><img src="./assets/ganalyze.jpg"></div>
+    <div class="comment">
+      <a href="http://ganalyze.csail.mit.edu/" target="_blank">
+        L. Goetschalckx, A. Andonian, A. Oliva, P. Isola.
+        GANalyze: Toward Visual Definitions of Cognitive Image Properties.
+        ICCV, 2019.</a><br>
+      <b>Comment:</b>
+      Navigates the manifold of GAN's latent space to increase memorability.
+    </div>
   </div>
   <div class="citation">
-    <img src="./assets/steerability.jpg">
-    <a href="https://ali-design.github.io/gan_steerability/">
-      A. Jahanian, L. Chai, P. Isola.
-      On the "Steerability" of Generative Adversarial Networks.
-      ICLR, 2020.
-    </a>
-    <br>
-    <b>Comment:</b> Shifts the data distribution by steering the latent code to fit camera movements and color changes.
+    <div class="image"><img src="./assets/steerability.jpg"></div>
+    <div class="comment">
+      <a href="https://ali-design.github.io/gan_steerability/" target="_blank">
+        A. Jahanian, L. Chai, P. Isola.
+        On the "Steerability" of Generative Adversarial Networks.
+        ICLR, 2020.</a><br>
+      <b>Comment:</b>
+      Shifts the data distribution by steering the latent code to fit camera movements and color changes.
+    </div>
   </div>
   <div class="citation">
-    <img src="./assets/higan.jpg">
-    <a href="https://genforce.github.io/higan/">
-      C. Yang, Y. Shen, B. Zhou.
-      Semantic Hierarchy Emerges in Deep Generative Representations for Scene Synthesis.
-      arXiv preprint arXiv:1911.09267.
-    </a>
-    <br>
-    <b>Comment:</b> Explores the emergent semantic hierarchy in scene synthesis models.
+    <div class="image"><img src="./assets/higan.jpg"></div>
+    <div class="comment">
+      <a href="https://genforce.github.io/higan/" target="_blank">
+        C. Yang, Y. Shen, B. Zhou.
+        Semantic Hierarchy Emerges in Deep Generative Representations for Scene Synthesis.
+        arXiv preprint arXiv:1911.09267.</a><br>
+      <b>Comment:</b>
+      Explores the emergent semantic hierarchy in scene synthesis models.
+    </div>
   </div>
 </div>
-<!--====== References Section Ends ======-->
+<!-- === Reference Section Ends === -->
 
 
 </body>

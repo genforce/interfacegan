@@ -1,18 +1,11 @@
-/* Homepage Style */
-
 /* Body */
 body {
-	background: #e3e5e8;
-	color: #ffffff;
+  background: #e3e5e8;
+  color: #ffffff;
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-	font-weight: 300;
-	font-size: 14pt;
+  font-weight: 300;
+  font-size: 14pt;
 }
-
-/* Headings */
-h1 {font-size:30pt;}
-h2 {font-size:22pt;}
-h3 {font-size:14pt;}
 
 /* Hyperlinks */
 a {text-decoration: none;}
@@ -21,83 +14,122 @@ a:visited {color: #1772d0;}
 a:active {color: red;}
 a:hover {color: #f09228;}
 
+/* Pre-formatted Text */
 pre {
-	background: #fcfcfc;
-	border: 0;
-	font-size: 12pt;
-	margin: 5pt auto;
+  margin: 5pt 0;
+  border: 0;
+  font-size: 12pt;
+  background: #fcfcfc;
 }
 
-/* Container */
-.container {
-	width: 768pt;
-	min-height: 100pt;
-	margin: 15pt auto;
-	padding: 20pt;
-	border: 1pt hidden #000;
-	text-align: justify;
-	color: #000000;
-	background: #ffffff;
+/* Project Page Style */
+/* Section */
+.section {
+  width: 768pt;
+  min-height: 100pt;
+  margin: 15pt auto;
+  padding: 20pt 30pt;
+  border: 1pt hidden #000;
+  text-align: justify;
+  color: #000000;
+  background: #ffffff;
 }
 
-.container .title {
-	text-align: center;
-	font-size: 22pt;
-	margin: 5pt auto;
+/* Header (Title and Logo) */
+.section .header {
+  min-height: 80pt;
+  margin-top: 30pt;
 }
-
-.container .author {
-	text-align: center;
-	font-size: 16pt;
-	margin: 20pt auto;
-}
-
-.container .institution {
-	text-align: center;
-	font-size: 16pt;
-	margin: 20pt auto;
-}
-
-.container .link {
-	text-align: center;
-	font-size: 16pt;
-	margin: 20pt auto;
-}
-
-.container .teaser {text-align: center;}
-.container .teaser img {
-	text-align: center;
-	margin: 20pt auto;
-	width: 95%;
-}
-
-.container .body {
-	text-align: justify;
-	font-size: 14pt;
-	margin: 10pt auto;
-}
-
-.container .bibtex {
-	text-align: left;
-	font-size: 22pt;
-	margin: 5pt auto;
-}
-
-.container .ref {
-	text-align: left;
-	font-size: 18pt;
-	font-weight: bold;
-	margin: 15pt auto;
-}
-
-.container .citation {
-  margin: 8pt auto;
-  font-size:14pt;
-  clear: both;
-}
-
-.container .citation img {
+.section .header .logo {
+  width: 80pt;
+  margin-left: 10pt;
   float: left;
-  margin: 0 8pt 8pt 0;  /*top right bottom left*/
+}
+.section .header .logo img {
+  width: 80pt;
+  object-fit: cover;
+}
+.section .header .title {
+  margin: 0 120pt;
+  text-align: center;
+  font-size: 22pt;
+}
+
+/* Author */
+.section .author {
+  margin: 5pt 0;
+  text-align: center;
+  font-size: 16pt;
+}
+
+/* Institution */
+.section .institution {
+  margin: 5pt 0;
+  text-align: center;
+  font-size: 16pt;
+}
+
+/* Hyperlink (such as Paper and Code) */
+.section .link {
+  margin: 5pt 0;
+  text-align: center;
+  font-size: 16pt;
+}
+
+/* Teaser */
+.section .teaser {
+  margin: 20pt 0;
+  text-align: center;
+}
+.section .teaser img {
+  width: 95%;
+}
+
+/* Section Title */
+.section .title {
+  text-align: center;
+  font-size: 22pt;
+  margin: 5pt 0 15pt 0;  /* top right bottom left */
+}
+
+/* Section Body */
+.section .body {
+  margin-bottom: 15pt;
+  text-align: justify;
+  font-size: 14pt;
+}
+
+/* BibTeX */
+.section .bibtex {
+  margin: 5pt 0;
+  text-align: left;
+  font-size: 22pt;
+}
+
+/* Related Work */
+.section .ref {
+  margin: 20pt 0 10pt 0;  /* top right bottom left */
+  text-align: left;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+/* Citation */
+.section .citation {
+  min-height: 60pt;
+  margin: 10pt 0;
+}
+.section .citation .image {
   width: 120pt;
+  float: left;
+}
+.section .citation .image img {
+  max-height: 60pt;
+  width: 120pt;
+  object-fit: cover;
+}
+.section .citation .comment{
+  margin-left: 130pt;
+  text-align: left;
+  font-size: 14pt;
 }
