@@ -176,3 +176,14 @@ We provided following boundaries in folder `boundaries/`. The boundaries can be 
     - `stylegan_ffhq_age_w_boundary.npy`: Age.
     - `stylegan_ffhq_gender_w_boundary.npy`: Gender.
     - `stylegan_ffhq_eyeglasses_w_boundary.npy`: Eyeglasses.
+
+## BibTeX
+
+```bibtex
+@inproceedings{shen2020interpreting,
+  title     = {Interpreting the Latent Space of GANs for Semantic Face Editing},
+  author    = {Shen, Yujun and Gu, Jinjin and Tang, Xiaoou and Zhou, Bolei},
+  booktitle = {CVPR},
+  year      = {2020}
+}
+```
