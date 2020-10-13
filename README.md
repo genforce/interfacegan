@@ -17,6 +17,7 @@ In this repository, we propose an approach, termed as InterFaceGAN, for semantic
 [[Paper](https://arxiv.org/pdf/1907.10786.pdf)]
 [[Project Page](https://genforce.github.io/interfacegan/)]
 [[Demo](https://www.youtube.com/watch?v=uoftpl3Bj6w)]
+[[Colab](https://colab.research.google.com/github/genforce/interfacegan/blob/master/docs/InterFaceGAN.ipynb)]
 
 ## How to Use
 
