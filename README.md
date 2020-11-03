@@ -185,3 +185,12 @@ We provided following boundaries in folder `boundaries/`. The boundaries can be 
   year      = {2020}
 }
 ```
+
+```bibtex
+@article{shen2020interfacegan,
+  title   = {InterFaceGAN: Interpreting the Disentangled Face Representation Learned by GANs},
+  author  = {Shen, Yujun and Yang, Ceyuan and Tang, Xiaoou and Zhou, Bolei},
+  journal = {TPAMI},
+  year    = {2020}
+}
+```
