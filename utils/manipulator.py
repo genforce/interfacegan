@@ -140,28 +140,24 @@ def train_boundary(latent_codes,
 
 def project_boundary(primal, *args):
   """Projects the primal boundary onto condition boundaries.
-
+  
   The function is used for conditional manipulation, where the projected vector
   will be subscribed from the normal direction of the original boundary. Here,
   all input boundaries are supposed to have already been normalized to unit
   norm, and with same shape [1, latent_space_dim].
-
-  NOTE: For now, at most two condition boundaries are supported.
-
+  
   Args:
     primal: The primal boundary.
     *args: Other boundaries as conditions.
-
+  
   Returns:
     A projected boundary (also normalized to unit norm), which is orthogonal to
       all condition boundaries.
-
+  
   Raises:
-    NotImplementedError: If there are more than two condition boundaries.
+    LinAlgError: If there are more than two condition boundaries and the method fails 
+                 to find a projected boundary orthogonal to all condition boundaries.
   """
-  if len(args) > 2:
-    raise NotImplementedError(f'This function supports projecting with at most '
-                              f'two conditions.')
   assert len(primal.shape) == 2 and primal.shape[0] == 1
 
   if not args:
@@ -172,7 +168,7 @@ def project_boundary(primal, *args):
             cond.shape[1] == primal.shape[1])
     new = primal - primal.dot(cond.T) * cond
     return new / np.linalg.norm(new)
-  if len(args) == 2:
+  elif len(args) == 2:
     cond_1 = args[0]
     cond_2 = args[1]
     assert (len(cond_1.shape) == 2 and cond_1.shape[0] == 1 and
@@ -188,8 +184,16 @@ def project_boundary(primal, *args):
         1 - cond_1_cond_2 ** 2 + 1e-8)
     new = primal - alpha * cond_1 - beta * cond_2
     return new / np.linalg.norm(new)
-
-  raise NotImplementedError
+  else:
+    for cond_boundary in args:
+      assert (len(cond_boundary.shape) == 2 and cond_boundary.shape[0] == 1 and
+              cond_boundary.shape[1] == primal.shape[1])
+    cond_boundaries = np.squeeze(np.asarray(args))
+    A = np.matmul(cond_boundaries, cond_boundaries.T)
+    B = np.matmul(cond_boundaries, primal.T)
+    x = np.linalg.solve(A, B)
+    new = primal - (np.matmul(x.T, cond_boundaries))
+    return new / np.linalg.norm(new)
 
 
 def linear_interpolate(latent_code,
