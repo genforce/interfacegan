@@ -48,6 +48,9 @@ def parse_args():
                       help='If specified, will skip generating images in '
                            'Style GAN. (default: generate images)')
 
+  parser.add_argument('-r', '--resize', type=int, default=224,
+                   help='Resize the image at the specified size')
+
   return parser.parse_args()
 
 
@@ -99,8 +102,12 @@ def main():
     for key, val in outputs.items():
       if key == 'image':
         for image in val:
+          image = image[:, :, ::-1]
           save_path = os.path.join(args.output_dir, f'{pbar.n:06d}.jpg')
-          cv2.imwrite(save_path, image[:, :, ::-1])
+          if args.resize:
+            resize_dim = (args.resize, args.resize)
+            image = cv2.resize(image, resize_dim, interpolation = cv2.INTER_CUBIC)
+          cv2.imwrite(save_path, image)
           pbar.update(1)
       else:
         results[key].append(val)
