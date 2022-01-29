@@ -8,6 +8,9 @@ Basically, this class is derived from the `BaseGenerator` class defined in
 import os
 import numpy as np
 import pickle
+from PIL import Image
+
+from typing import List, Optional, Tuple, Union
 
 import torch
 
@@ -17,6 +20,17 @@ from .base_generator import BaseGenerator
 
 __all__ = ['StyleGANGenerator']
 
+def make_transform(translate: Tuple[float,float], angle: float):
+    m = np.eye(3)
+    s = np.sin(angle/360.0*np.pi*2)
+    c = np.cos(angle/360.0*np.pi*2)
+    m[0][0] = c
+    m[0][1] = s
+    m[0][2] = translate[0]
+    m[1][0] = -s
+    m[1][1] = c
+    m[1][2] = translate[1]
+    return m
 
 class StyleGAN3Generator(BaseGenerator):
   """Defines the generator class of StyleGAN.
@@ -151,66 +165,21 @@ class StyleGAN3Generator(BaseGenerator):
       raise ValueError(f'Latent codes should be with type `numpy.ndarray`!')
 
     results = {}
-
+    translate = (0,0)
+    rotate=0.5
     latent_space_type = latent_space_type.upper()
-    latent_codes_shape = latent_codes.shape
-    # Generate from Z space.
-    if latent_space_type == 'Z':
-      if not (len(latent_codes_shape) == 2 and
-              latent_codes_shape[0] <= self.batch_size and
-              latent_codes_shape[1] == self.latent_space_dim):
-        raise ValueError(f'Latent_codes should be with shape [batch_size, '
-                         f'latent_space_dim], where `batch_size` no larger '
-                         f'than {self.batch_size}, and `latent_space_dim` '
-                         f'equal to {self.latent_space_dim}!\n'
-                         f'But {latent_codes_shape} received!')
-      zs = torch.from_numpy(latent_codes).type(torch.FloatTensor)
-      zs = zs.to(self.run_device)
-      label = torch.zeros([1, self.c_space_dim])
-      ws = self.model.mapping(zs, label)
-      results['z'] = latent_codes
-      results['w'] = self.get_value(ws)
-    # Generate from W space.
-    elif latent_space_type == 'W':
-      if not (len(latent_codes_shape) == 2 and
-              latent_codes_shape[0] <= self.batch_size and
-              latent_codes_shape[1] == self.w_space_dim):
-        raise ValueError(f'Latent_codes should be with shape [batch_size, '
-                         f'w_space_dim], where `batch_size` no larger than '
-                         f'{self.batch_size}, and `w_space_dim` equal to '
-                         f'{self.w_space_dim}!\n'
-                         f'But {latent_codes_shape} received!')
-      ws = torch.from_numpy(latent_codes).type(torch.FloatTensor)
-      ws = ws.to(self.run_device)
-      wps = self.model.truncation(ws)
-      results['w'] = latent_codes
-      results['wp'] = self.get_value(wps)
-    # Generate from W+ space.
-    elif latent_space_type == 'WP':
-      if not (len(latent_codes_shape) == 3 and
-              latent_codes_shape[0] <= self.batch_size and
-              latent_codes_shape[1] == self.num_layers and
-              latent_codes_shape[2] == self.w_space_dim):
-        raise ValueError(f'Latent_codes should be with shape [batch_size, '
-                         f'num_layers, w_space_dim], where `batch_size` no '
-                         f'larger than {self.batch_size}, `num_layers` equal '
-                         f'to {self.num_layers}, and `w_space_dim` equal to '
-                         f'{self.w_space_dim}!\n'
-                         f'But {latent_codes_shape} received!')
-      wps = torch.from_numpy(latent_codes).type(torch.FloatTensor)
-      wps = wps.to(self.run_device)
-      results['wp'] = latent_codes
-    else:
-      raise ValueError(f'Latent space type `{latent_space_type}` is invalid!')
+    z = torch.from_numpy(latent_codes).to(self.run_device)
+    label = torch.ones([1, self.c_space_dim]).to(self.run_device)
 
-    if generate_style:
-      for i in range(self.num_layers):
-        style = self.model.synthesis.__getattr__(
-            f'layer{i}').epilogue.style_mod.dense(wps[:, i, :])
-        results[f'style{i:02d}'] = self.get_value(style)
+    if hasattr(self.model.synthesis, 'input'):
+      m = make_transform(translate, rotate)
+      m = np.linalg.inv(m)
+      self.model.synthesis.input.transform.copy_(torch.from_numpy(m))
 
-    if generate_image:
-      images = self.model.synthesis(ws)
-      results['image'] = self.get_value(images)
+    img = self.model(z, label)
+    img = (img.permute(0, 2, 3, 1) * 127.5 + 128).clamp(0, 255).to(torch.uint8)
+    img = img.cpu().numpy()
 
+    results['image'] = img
+    results['z'] = latent_codes
     return results

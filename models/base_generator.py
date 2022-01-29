@@ -213,16 +213,17 @@ class BaseGenerator(object):
     if not isinstance(images, np.ndarray):
       raise ValueError(f'Images should be with type `numpy.ndarray`!')
 
-    images_shape = images.shape
-    if len(images_shape) != 4 or images_shape[1] not in [1, 3]:
-      raise ValueError(f'Input should be with shape [batch_size, channel, '
-                       f'height, width], where channel equals to 1 or 3. '
-                       f'But {images_shape} is received!')
-    images = (images - self.min_val) * 255 / (self.max_val - self.min_val)
-    images = np.clip(images + 0.5, 0, 255).astype(np.uint8)
-    images = images.transpose(0, 2, 3, 1)
-    if self.channel_order == 'BGR':
-      images = images[:, :, :, ::-1]
+    if self.model_name == 'stylegan3':
+      images_shape = images.shape
+      if len(images_shape) != 4 or images_shape[1] not in [1, 3]:
+        raise ValueError(f'Input should be with shape [batch_size, channel, '
+                        f'height, width], where channel equals to 1 or 3. '
+                        f'But {images_shape} is received!')
+      images = (images - self.min_val) * 255 / (self.max_val - self.min_val)
+      images = np.clip(images + 0.5, 0, 255).astype(np.uint8)
+      images = images.transpose(0, 2, 3, 1)
+      if self.channel_order == 'BGR':
+        images = images[:, :, :, ::-1]
 
     return images
 

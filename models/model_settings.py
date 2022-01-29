@@ -61,7 +61,6 @@ MODEL_POOL = {
         'fused_scale': 'auto',
     },
     'stylegan3_ffhq': {
-        'tf_model_path': MODEL_DIR + '/karras2019stylegan-ffhq-1024x1024.pkl',
         'model_path': MODEL_DIR + '/stylegan3-t-ffhq-1024x1024.pkl',
         'gan_type': 'stylegan3',
         'dataset_name': 'ffhq',
