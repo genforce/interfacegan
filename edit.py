@@ -61,7 +61,7 @@ def parse_args():
 def main():
   """Main function."""
   args = parse_args()
-  logger = setup_logger(args.output_dir, logger_name='generate_data')
+  logger = setup_logger(args.output_dir, logger_name='edit')
 
   logger.info(f'Initializing generator.')
   gan_type = MODEL_POOL[args.model_name]['gan_type']
