@@ -13,11 +13,11 @@
 
 > From left to right - Images generated using styleGAN2 and the boundaries *Bald*, *Blond*, *Heavy_Makeup*, *Gray_Hair*
 
-This the the repository to a project related to the *Introduction to Numerical Imaging* (*i.e, Introduction à l'Imagerie Numérique* in French), given by the MVA Masters program at ENS-Paris Saclay. The project and repository is based on the work from [Shen et al.](https://github.com/younesbelkada/interfacegan/blob/master/README_old.md), and fully supports their codebase. You can refer to the [original README](https://github.com/younesbelkada/interfacegan/blob/master/README_old.md)) to reproduce their results.
+This the the repository to a project related to the [*Introduction to Numerical Imaging*](https://delon.wp.imt.fr/enseignement/mva-introduction-a-limagerie-numerique/) (*i.e, Introduction à l'Imagerie Numérique* in French), given by the MVA Masters program at ENS-Paris Saclay. The project and repository is based on the work from [Shen et al.](https://github.com/younesbelkada/interfacegan/blob/master/README_old.md), and fully supports their codebase. You can refer to the [original README](https://github.com/younesbelkada/interfacegan/blob/master/README_old.md)) to reproduce their results.
 
 ## Introduction
 
-> In this repository, we propose an approach, termed as InterFaceGAN++, for semantic face editing based on the work from Shen et al. Specifically, we leverage the ideas from the previous work, by applying the method for new face attributes, and also for StyleGAN3. We qualitatively explain that moving the latent vector toward the trained boundaries leads in many cases to keeping the semantic information of the generated images (by preserving its local structure) and modify the desired attribute.
+> In this repository, we propose an approach, termed as InterFaceGAN++, for semantic face editing based on the work from Shen et al. Specifically, we leverage the ideas from the previous work, by applying the method for new face attributes, and also for StyleGAN3. We qualitatively explain that moving the latent vector toward the trained boundaries leads in many cases to keeping the semantic information of the generated images (by preserving its local structure) and modify the desired attribute, thus helps to demonstrate the disentangled property of the styleGANs. 
 
 ## :fire: Additional features
 
