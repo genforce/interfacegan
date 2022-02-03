@@ -1,5 +1,9 @@
 # InterfaceGAN++: Exploring the limits of InterfaceGAN
 
+![Python 3.8](https://img.shields.io/badge/python-3.8-green.svg?style=plastic)
+![pytorch 1.10.2](https://img.shields.io/badge/pytorch-1.10.2-green.svg?style=plastic)
+![sklearn 0.21.2](https://img.shields.io/badge/sklearn-0.21.2-green.svg?style=plastic)
+
 <p float="left">
   <img src="images/bald2.gif" width="200" />
   <img src="images/blond.gif" width="200" /> 
@@ -50,3 +54,4 @@ python generate_data.py -m stylegan3_ffhq -o output_stylegan3 -n 10
 ```
 
 ## Edit generated images
+
