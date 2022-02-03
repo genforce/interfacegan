@@ -167,7 +167,6 @@ class StyleGAN3Generator(BaseGenerator):
     results = {}
     translate = (0,0)
     rotate=0.0
-    latent_space_type = latent_space_type.upper()
     z = torch.from_numpy(latent_codes).to(self.run_device)
     label = torch.zeros([1, self.c_space_dim]).to(self.run_device)
 

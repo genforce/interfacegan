@@ -21,6 +21,7 @@ from tqdm import tqdm
 from models.model_settings import MODEL_POOL
 from models.pggan_generator import PGGANGenerator
 from models.stylegan_generator import StyleGANGenerator
+from models.stylegan3_generator import StyleGAN3Generator
 from utils.logger import setup_logger
 from utils.manipulator import linear_interpolate
 
@@ -71,6 +72,9 @@ def main():
   elif gan_type == 'stylegan':
     model = StyleGANGenerator(args.model_name, logger)
     kwargs = {'latent_space_type': args.latent_space_type}
+  elif gan_type == 'stylegan3':
+    model = StyleGAN3Generator(args.model_name, logger)
+    kwargs = {'latent_space_type': args.latent_space_type}
   else:
     raise NotImplementedError(f'Not implemented GAN type `{gan_type}`!')
 
@@ -103,6 +107,8 @@ def main():
       if gan_type == 'pggan':
         outputs = model.easy_synthesize(interpolations_batch)
       elif gan_type == 'stylegan':
+        outputs = model.easy_synthesize(interpolations_batch, **kwargs)
+      elif gan_type == 'stylegan3':
         outputs = model.easy_synthesize(interpolations_batch, **kwargs)
       for image in outputs['image']:
         save_path = os.path.join(args.output_dir,
