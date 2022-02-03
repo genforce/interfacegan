@@ -29,11 +29,11 @@ This the the repository to a project related to the *Introduction to Numerical I
 
 The list of new features can be found on our [attributes detection classifier repository](https://github.com/clementapa/CelebFaces_Attributes_Classification/blob/main/utils/constant.py)
 
-## Training an attribute detection classifier
+## :hammer: Training an attribute detection classifier
 
 We use a ViT-base model to train an attribute detection classifier, please refer to our [classification code](https://github.com/clementapa/CelebFaces_Attributes_Classification) if you want to test it for new models. Once you retrieve the trained SVM from this repo, you can directly move them in this repo and use them.
 
-## Generate images using StyleGAN2 & StyleGAN3
+## :star: Generate images using StyleGAN2 & StyleGAN3
 
 We did not changed anything to the structure of the old repository, please refer to the [previous README](https://github.com/younesbelkada/interfacegan/blob/master/README_old.md).
 
@@ -55,3 +55,4 @@ python generate_data.py -m stylegan3_ffhq -o output_stylegan3 -n 10
 
 ## :pencil2: Edit generated images
 
+### Examples
