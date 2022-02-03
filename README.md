@@ -53,5 +53,5 @@ If you want to generate images using styleGAN3 downloaded before, run:
 python generate_data.py -m stylegan3_ffhq -o output_stylegan3 -n 10
 ```
 
-## Edit generated images
+## :pencil2: Edit generated images
 
