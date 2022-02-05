@@ -98,4 +98,4 @@ STYLEGAN_RANDOMIZE_NOISE = False
 # Settings for model running.
 USE_CUDA = True
 
-MAX_IMAGES_ON_DEVICE = 4
+MAX_IMAGES_ON_DEVICE = 8
