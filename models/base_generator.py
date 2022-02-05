@@ -212,8 +212,7 @@ class BaseGenerator(object):
     """
     if not isinstance(images, np.ndarray):
       raise ValueError(f'Images should be with type `numpy.ndarray`!')
-
-    if 'stylegan3' not in self.model_name:
+    if ('stylegan3' not in self.model_name) and ('stylegan2' not in self.model_name):
       images_shape = images.shape
       if len(images_shape) != 4 or images_shape[1] not in [1, 3]:
         raise ValueError(f'Input should be with shape [batch_size, channel, '

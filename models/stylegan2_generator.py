@@ -32,7 +32,7 @@ def make_transform(translate: Tuple[float,float], angle: float):
     m[1][2] = translate[1]
     return m
 
-class StyleGAN3Generator(BaseGenerator):
+class StyleGAN2Generator(BaseGenerator):
   """Defines the generator class of StyleGAN.
 
   Different from conventional GAN, StyleGAN introduces a disentangled latent
