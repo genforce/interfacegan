@@ -23,7 +23,7 @@ This the the repository to a project related to the [*Introduction to Numerical 
 
 + Supports styleGAN3 on the classic attributes
 + New attributes (Bald, Gray hair, Blond hair, Earings, ...) for:
-  + StyleGAN2
+  + StyleGAN
   + StyleGAN3
 + Supports face generation using StyleGAN3
 
