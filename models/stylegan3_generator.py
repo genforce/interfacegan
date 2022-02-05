@@ -175,10 +175,15 @@ class StyleGAN3Generator(BaseGenerator):
       m = np.linalg.inv(m)
       self.model.synthesis.input.transform.copy_(torch.from_numpy(m))
 
+    ws = self.model.mapping(z, label)
+    #wps = self.model.truncation(w)
     img = self.model(z, label)
     img = (img.permute(0, 2, 3, 1) * 127.5 + 128).clamp(0, 255).to(torch.uint8)
     img = img.cpu().numpy()
 
     results['image'] = img
     results['z'] = latent_codes
+    results['w'] = ws.detach().cpu().numpy()
+    #results['wp'] = wps.detach().cpu().numpy()
+
     return results
