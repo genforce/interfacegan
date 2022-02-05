@@ -67,7 +67,7 @@ def main():
   elif gan_type == 'stylegan':
     model = StyleGANGenerator(args.model_name, logger)
     kwargs = {'latent_space_type': args.latent_space_type}
-  elif gan_type == 'stylegan3':
+  elif gan_type == 'stylegan3' or gan_type == 'stylegan2':
     model = StyleGAN3Generator(args.model_name, logger)
     kwargs = {'latent_space_type': args.latent_space_type}
   else:
