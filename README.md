@@ -16,6 +16,20 @@ Authors : Apavou Clément & Belkada Younes
 
 This the the repository to a project related to the [*Introduction to Numerical Imaging*](https://delon.wp.imt.fr/enseignement/mva-introduction-a-limagerie-numerique/) (*i.e, Introduction à l'Imagerie Numérique* in French), given by the MVA Masters program at ENS-Paris Saclay. The project and repository is based on the work from [Shen et al.](https://github.com/younesbelkada/interfacegan/blob/master/README_old.md), and fully supports their codebase. You can refer to the [original README](https://github.com/younesbelkada/interfacegan/blob/master/README_old.md)) to reproduce their results.
 
+- [Introduction](#introduction)
+- [:fire: Additional features](#-fire--additional-features)
+- [:hammer: Training an attribute detection classifier](#-hammer--training-an-attribute-detection-classifier)
+- [:star: Generate images using StyleGAN & StyleGAN2 & StyleGAN3](#-star--generate-images-using-stylegan---stylegan2---stylegan3)
+  * [:movie_camera: Get the pretrained StyleGAN](#-movie-camera--get-the-pretrained-stylegan)
+  * [:movie_camera: Get the pretrained StyleGAN2](#-movie-camera--get-the-pretrained-stylegan2)
+  * [:movie_camera: Get the pretrained StyleGAN3](#-movie-camera--get-the-pretrained-stylegan3)
+  * [:art: Run the generation script](#-art--run-the-generation-script)
+- [:pencil2: Edit generated images](#-pencil2--edit-generated-images)
+  * [Examples](#examples)
+    + [StyleGAN](#stylegan)
+    + [StyleGAN2](#stylegan2)
+    + [StyleGAN3](#stylegan3)
+
 ## Introduction
 
 > In this repository, we propose an approach, termed as InterFaceGAN++, for semantic face editing based on the work from Shen et al. Specifically, we leverage the ideas from the previous work, by applying the method for new face attributes, and also for StyleGAN3. We qualitatively explain that moving the latent vector toward the trained boundaries leads in many cases to keeping the semantic information of the generated images (by preserving its local structure) and modify the desired attribute, thus helps to demonstrate the disentangled property of the styleGANs. 
@@ -39,16 +53,23 @@ We use a ViT-base model to train an attribute detection classifier, please refer
 
 We did not changed anything to the structure of the old repository, please refer to the [previous README](https://github.com/younesbelkada/interfacegan/blob/master/README_old.md). For StyleGAN
 
+### :movie_camera: Get the pretrained StyleGAN
+
+We use the styleGAN trained on ffhq for our experiments, if you want to reproduce them, run:
+```
+wget -P interfacegan/models/pretrain https://www.dropbox.com/s/qyv37eaobnow7fu/stylegan_ffhq.pth
+```
+
 ### :movie_camera: Get the pretrained StyleGAN2
 
-We use the styleGAN3 trained on ffhq for our experiments, if you want to reproduce them, run
+We use the styleGAN2 trained on ffhq for our experiments, if you want to reproduce them, run:
 ```
-wget -P interfacegan/models/pretrain https://api.ngc.nvidia.com/v2/models/nvidia/research/stylegan2/versions/1/files/stylegan2-ffhq-1024x1024.pkl 
+wget -P models/pretrain https://api.ngc.nvidia.com/v2/models/nvidia/research/stylegan2/versions/1/files/stylegan2-ffhq-1024x1024.pkl 
 ```
 
 ### :movie_camera: Get the pretrained StyleGAN3
 
-We use the styleGAN3 trained on ffhq for our experiments, if you want to reproduce them, run
+We use the styleGAN3 trained on ffhq for our experiments, if you want to reproduce them, run:
 ```
 wget -P models/pretrain https://api.ngc.nvidia.com/v2/models/nvidia/research/stylegan3/versions/1/files/stylegan3-t-ffhq-1024x1024.pkl 
 ```
@@ -57,16 +78,49 @@ The pretrained model should be copied at ``` models/pretrain ```. If not, move t
 
 ### :art: Run the generation script
 
-If you want to generate images using styleGAN3 downloaded before, run:
+If you want to generate 10 images using styleGAN3 downloaded before, run:
 ```
 python generate_data.py -m stylegan3_ffhq -o output_stylegan3 -n 10
 ```
-The arguments are exactly the same as the arguments from the original repository, the code supports the flag ```-m stylegan3_ffhq``` for styleGAN3.
+The arguments are exactly the same as the arguments from the original repository, the code supports the flag ```-m stylegan3_ffhq``` for styleGAN3 and ```-m stylegan3_ffhq``` for styleGAN2.
 
 ## :pencil2: Edit generated images
 
-You can edit the generated
+You can edit the generated images using our trained boundaries! Depending on the generator you want to use, make sure that you have downloaded the right model and put them into ``` models/pretrain ```. 
 
-A Google Colab notebook is available to test our code with new attributes.
+### Examples
 
-### Examples=
+Please refer to our interactive google colab notebook to play with our models by clicking the following badge: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1rcHYcpDTbaMq8ciJh4-HMW7nR_NbKqtL#scrollTo=ccONBF60mVir)
+
+#### StyleGAN
+
+Example of generated images using StyleGAN and moving the images towards the direction of the attribute **grey hair**:
+
+<p float="center">
+  <img src="images/sg_before.jpeg" alt="original images generated with StyleGAN"/>
+</p>
+<p float="center">
+  <img src="images/sg_grey_hair.jpeg" alt="grey hair version of the images generated with StyleGAN"/>
+</p>
+
+#### StyleGAN2
+
+Example of generated images using StyleGAN2 and moving the images towards the opposite direction of the attribute **young**:
+
+<p float="center">
+  <img src="images/sg2.jpeg" alt="original images generated with StyleGAN2"/>
+</p>
+<p float="center">
+  <img src="images/sg2_not_young.jpeg" alt="non young version of the images generated with StyleGAN2"/>
+</p>
+
+#### StyleGAN3
+
+Example of generated images using StyleGAN3 and moving the images towards the attribute **beard**:
+
+<p float="center">
+  <img src="images/sg3_before.jpeg"/>
+</p>
+<p float="center">
+  <img src="images/sg3_beard.jpeg"/>
+</p>
