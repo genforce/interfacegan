@@ -67,10 +67,6 @@ The arguments are exactly the same as the arguments from the original repository
 
 You can edit the generated
 
-<<<<<<< HEAD
 A Google Colab notebook is available to test our code with new attributes.
 
 ### Examples=
-=======
-### Examples
->>>>>>> 3e1eac4ed7293b1b5b7bd001af8b501f08fa8d48
