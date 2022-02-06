@@ -22,6 +22,7 @@ from models.model_settings import MODEL_POOL
 from models.pggan_generator import PGGANGenerator
 from models.stylegan_generator import StyleGANGenerator
 from models.stylegan3_generator import StyleGAN3Generator
+from models.stylegan2_generator import StyleGAN2Generator
 from utils.logger import setup_logger
 from utils.manipulator import linear_interpolate
 
@@ -75,6 +76,9 @@ def main():
   elif gan_type == 'stylegan3':
     model = StyleGAN3Generator(args.model_name, logger)
     kwargs = {'latent_space_type': args.latent_space_type}
+  elif gan_type == 'stylegan2':
+    model = StyleGAN2Generator(args.model_name, logger)
+    kwargs = {'latent_space_type': args.latent_space_type}
   else:
     raise NotImplementedError(f'Not implemented GAN type `{gan_type}`!')
 
@@ -108,7 +112,7 @@ def main():
         outputs = model.easy_synthesize(interpolations_batch)
       elif gan_type == 'stylegan':
         outputs = model.easy_synthesize(interpolations_batch, **kwargs)
-      elif gan_type == 'stylegan3':
+      elif gan_type in ['stylegan3', 'stylegan2']:
         outputs = model.easy_synthesize(interpolations_batch, **kwargs)
       for image in outputs['image']:
         save_path = os.path.join(args.output_dir,
