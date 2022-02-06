@@ -1,5 +1,6 @@
 # InterfaceGAN++: Exploring the limits of InterfaceGAN
-Authors : Apavou Clément & Belkada Younes 
+
+> Authors: [Apavou Clément](https://github.com/clementapa) & [Belkada Younes](https://github.com/younesbelkada)
 
 ![Python 3.8](https://img.shields.io/badge/python-3.8-green.svg?style=plastic)
 ![pytorch 1.10.2](https://img.shields.io/badge/pytorch-1.10.2-green.svg?style=plastic)
