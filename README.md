@@ -37,12 +37,12 @@ This the the repository to a project related to the [*Introduction to Numerical 
 
 ## :fire: Additional features
 
-+ Supports styleGAN3 on the classic attributes
++ Supports StyleGAN2 & StyleGAN3 on the classic attributes
 + New attributes (Bald, Gray hair, Blond hair, Earings, ...) for:
   + StyleGAN
   + StyleGAN2
   + StyleGAN3
-+ Supports face generation using StyleGAN3
++ Supports face generation using StyleGAN3 & StyleGAN2
 
 The list of new features can be found on our [attributes detection classifier repository](https://github.com/clementapa/CelebFaces_Attributes_Classification/blob/main/utils/constant.py)
 
