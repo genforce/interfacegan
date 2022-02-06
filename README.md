@@ -1,4 +1,5 @@
 # InterfaceGAN++: Exploring the limits of InterfaceGAN
+Authors : Apavou Clément & Belkada Younes 
 
 ![Python 3.8](https://img.shields.io/badge/python-3.8-green.svg?style=plastic)
 ![pytorch 1.10.2](https://img.shields.io/badge/pytorch-1.10.2-green.svg?style=plastic)
@@ -11,7 +12,7 @@
   <img src="images/gray_hair.gif" width="200" /> 
 </p>
 
-> From left to right - Images generated using styleGAN2 and the boundaries *Bald*, *Blond*, *Heavy_Makeup*, *Gray_Hair*
+> From left to right - Images generated using styleGAN and the boundaries *Bald*, *Blond*, *Heavy_Makeup*, *Gray_Hair*
 
 This the the repository to a project related to the [*Introduction to Numerical Imaging*](https://delon.wp.imt.fr/enseignement/mva-introduction-a-limagerie-numerique/) (*i.e, Introduction à l'Imagerie Numérique* in French), given by the MVA Masters program at ENS-Paris Saclay. The project and repository is based on the work from [Shen et al.](https://github.com/younesbelkada/interfacegan/blob/master/README_old.md), and fully supports their codebase. You can refer to the [original README](https://github.com/younesbelkada/interfacegan/blob/master/README_old.md)) to reproduce their results.
 
@@ -24,6 +25,7 @@ This the the repository to a project related to the [*Introduction to Numerical 
 + Supports styleGAN3 on the classic attributes
 + New attributes (Bald, Gray hair, Blond hair, Earings, ...) for:
   + StyleGAN
+  + StyleGAN2
   + StyleGAN3
 + Supports face generation using StyleGAN3
 
@@ -33,9 +35,16 @@ The list of new features can be found on our [attributes detection classifier re
 
 We use a ViT-base model to train an attribute detection classifier, please refer to our [classification code](https://github.com/clementapa/CelebFaces_Attributes_Classification) if you want to test it for new models. Once you retrieve the trained SVM from this repo, you can directly move them in this repo and use them.
 
-## :star: Generate images using StyleGAN2 & StyleGAN3
+## :star: Generate images using StyleGAN & StyleGAN2 & StyleGAN3
 
-We did not changed anything to the structure of the old repository, please refer to the [previous README](https://github.com/younesbelkada/interfacegan/blob/master/README_old.md).
+We did not changed anything to the structure of the old repository, please refer to the [previous README](https://github.com/younesbelkada/interfacegan/blob/master/README_old.md). For StyleGAN
+
+### :movie_camera: Get the pretrained StyleGAN2
+
+We use the styleGAN3 trained on ffhq for our experiments, if you want to reproduce them, run
+```
+wget -P interfacegan/models/pretrain https://api.ngc.nvidia.com/v2/models/nvidia/research/stylegan2/versions/1/files/stylegan2-ffhq-1024x1024.pkl 
+```
 
 ### :movie_camera: Get the pretrained StyleGAN3
 
@@ -57,5 +66,7 @@ The arguments are exactly the same as the arguments from the original repository
 ## :pencil2: Edit generated images
 
 You can edit the generated
+
+A Google Colab notebook is available to test our code with new attributes.
 
 ### Examples=
