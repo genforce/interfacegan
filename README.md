@@ -1,4 +1,5 @@
 # InterfaceGAN++: Exploring the limits of InterfaceGAN
+Authors : Apavou Clément & Belkada Younes 
 
 ![Python 3.8](https://img.shields.io/badge/python-3.8-green.svg?style=plastic)
 ![pytorch 1.10.2](https://img.shields.io/badge/pytorch-1.10.2-green.svg?style=plastic)
@@ -57,5 +58,7 @@ The arguments are exactly the same as the arguments from the original repository
 ## :pencil2: Edit generated images
 
 You can edit the generated
+
+A Google Colab notebook is available to test our code with new attributes.
 
 ### Examples=
