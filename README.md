@@ -6,6 +6,8 @@
 ![pytorch 1.10.2](https://img.shields.io/badge/pytorch-1.10.2-green.svg?style=plastic)
 ![sklearn 0.21.2](https://img.shields.io/badge/sklearn-0.21.2-green.svg?style=plastic)
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/younesbelkada/interfacegan/blob/master/InterFaceGAN%2B%2B.ipynb)
+
 <p float="left">
   <img src="images/bald2.gif" width="200" />
   <img src="images/blond.gif" width="200" /> 
