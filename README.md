@@ -91,7 +91,8 @@ You can edit the generated images using our trained boundaries! Depending on the
 
 ### Examples
 
-Please refer to our interactive google colab notebook to play with our models by clicking the following badge: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1rcHYcpDTbaMq8ciJh4-HMW7nR_NbKqtL#scrollTo=ccONBF60mVir)
+Please refer to our interactive google colab notebook to play with our models by clicking the following badge: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/younesbelkada/interfacegan/blob/master/InterFaceGAN%2B%2B.ipynb)
+
 
 #### StyleGAN
 
