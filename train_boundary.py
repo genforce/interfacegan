@@ -43,7 +43,7 @@ def parse_args():
 def main():
   """Main function."""
   args = parse_args()
-  logger = setup_logger(args.output_dir, logger_name='train_boundary')
+  logger = setup_logger(args.output_dir, logger_name='generate_data')
 
   logger.info('Loading latent codes.')
   if not os.path.isfile(args.latent_codes_path):

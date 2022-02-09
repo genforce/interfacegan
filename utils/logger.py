@@ -35,10 +35,10 @@ def setup_logger(work_dir=None, logfile_name='log.txt', logger_name='logger'):
   """
 
   logger = logging.getLogger(logger_name)
-  # if logger.hasHandlers():  # Already existed
-  #   raise SystemExit(f'Logger name `{logger_name}` has already been set up!\n'
-  #                    f'Please use another name, or otherwise the messages '
-  #                    f'may be mixed between these two loggers.')
+  if logger.hasHandlers():  # Already existed
+    raise SystemExit(f'Logger name `{logger_name}` has already been set up!\n'
+                     f'Please use another name, or otherwise the messages '
+                     f'may be mixed between these two loggers.')
 
   logger.setLevel(logging.DEBUG)
   formatter = logging.Formatter("[%(asctime)s][%(levelname)s] %(message)s")
@@ -53,11 +53,10 @@ def setup_logger(work_dir=None, logfile_name='log.txt', logger_name='logger'):
     return logger
 
   if os.path.exists(work_dir):
-    logger.warning('WARNING: Directory already exists, overwriting images')
-    #raise SystemExit(f'Work directory `{work_dir}` has already existed!\n'
-    #                 f'Please specify another one.')
-  else:
-    os.makedirs(work_dir)
+    raise SystemExit(f'Work directory `{work_dir}` has already existed!\n'
+                     f'Please specify another one.')
+  os.makedirs(work_dir)
+
   # Save log message with all levels in log file.
   fh = logging.FileHandler(os.path.join(work_dir, logfile_name))
   fh.setLevel(logging.DEBUG)

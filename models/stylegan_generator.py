@@ -280,4 +280,5 @@ class StyleGANGenerator(BaseGenerator):
     if generate_image:
       images = self.model.synthesis(wps)
       results['image'] = self.get_value(images)
+
     return results
